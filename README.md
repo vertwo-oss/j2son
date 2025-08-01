@@ -10,6 +10,18 @@ https://seriot.ch/projects/parsing_json.html
 
 But it appears to work.
 
+It can parse a 280 kB file in ~0.2 sec:
+
+```
+-rw-r--r--@ 1 troy  staff  285152 Jun 19 ... test.json
+
+real	0m0.198s
+user	0m0.228s
+sys	0m0.029s
+```
+
+Not great.  Pretty horrifying, I'm sure.
+
 ## It's a bit too permissive.
 
 On the tests which **should** fail, it succeeds.  Especially on the trailing garbage tests.  But, it works.
