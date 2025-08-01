@@ -25,9 +25,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-//import static dev.v2.mob.a.JsonParser.DEBUG_JSON_WALK;
-//import static bingo.ngo.mobile.a.Base.*;
-
 
 /**
  * An in-memory, random-access, representation of a JSON object, created by
@@ -69,6 +66,14 @@ public class Json
     public static final String JSON_LIT_NULL  = "null";
     public static final String JSON_LIT_TRUE  = "true";
     public static final String JSON_LIT_FALSE = "false";
+
+
+    public static Json parse( String input ) throws IOException, InvalidJsonException
+    {
+        final Json js = JsonParser.parse( input );
+        return js;
+    }
+
 
     protected final String key;
     protected final Object val;
@@ -464,33 +469,12 @@ public class Json
     public String toString()
     {
         return null == val ? "(null)" : val.toString();
-        //return TEXT_COLOR_YELLOW + s + TEXT_COLOR_SUFFIX;
     }
 
 
     public void dump()
     {
         dump( 0 );
-//        System.out.println( "================================================" );
-//        System.out.println( "   Datum type: " + getTypeName() + " System.out.println(" + type + ")" );
-//        System.out.println( "        value: " + getValue() );
-//        System.out.println( "------------------------------------------------" );
-//        System.out.println( "          key: " + key );
-//        System.out.println( "------------------------------------------------" );
-//        System.out.println( "    isBoolean? " + isBoolean() );
-//        System.out.println( "       isLong? " + isLong() );
-//        System.out.println( "     isDouble? " + isDouble() );
-//        System.out.println( "     isString? " + isString() );
-//        System.out.println( "------------------------------------------------" );
-//
-//        if ( isArray() ) {
-//            for ( Object obj : getArray() ) {
-//                if ( obj instanceof Json ) {
-//                    Json j = (Json)obj;
-//                    j.dump(4);
-//                }
-//            }
-//        }
     }
 
 
@@ -552,13 +536,6 @@ public class Json
             default:
                 return "[unknown-type]";
         }
-    }
-
-
-    public static Json parse( String input ) throws IOException, InvalidJsonException
-    {
-        final Json js = JsonParser.parse( input );
-        return js;
     }
 
 
@@ -635,7 +612,7 @@ public class Json
 
         if( argc < 1 )
         {
-            System.err.println( "Usage: java com.crinqle.j2son.Json file [file1 [file2 ... [filen]]]" );
+            System.err.println( "Usage: java com.crinqle.j2son.Json <file>" );
             System.exit( 1 );
         }
 
@@ -646,7 +623,6 @@ public class Json
             final String input = loadFile( path );
             final Json   j     = parse( input );
 
-            //j.dump();
             System.out.println( "<<< " + TEXT_COLOR_YELLOW + j + TEXT_COLOR_SUFFIX );
         }
         catch( InvalidJsonException jex )
