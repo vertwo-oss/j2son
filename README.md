@@ -10,6 +10,9 @@ https://seriot.ch/projects/parsing_json.html
 
 But it appears to work.
 
+## It's a bit too permissive.
+
+On the tests which **should** fail, it succeeds.  Especially on the trailing garbage tests.  But, it works.
 
 
 *[It does use the Properties hack for Unicode decoding.]*
