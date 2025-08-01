@@ -9,7 +9,7 @@ cd ../out/production/j2son
 
 for file in ../../../tests/test_parsing/${PREFIX}_* ; do
 
-	java com.crinqle.j2son.Json $(basename $file) 2>&1 | egrep "^>|^<|^.*JSON.error"
+	java com.crinqle.j2son.Json $(basename $file)
 
 	echo
 
