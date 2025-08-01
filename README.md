@@ -149,9 +149,9 @@ Which will recursively dump the contents:
 
 ## Test Suite
 
-If you wanna run the "Test Suite", I assume that the build outputs are parallel to the `src` directory, in a directory called `out`, and that the class files are found in in `out/production/j2son`.
+If you wanna run the "Test Suite", I assume that the build outputs are parallel to the `src` directory, in a directory called `out`, and that the class files are found in in `out/production/j2son`.  IntelliJ users should find this build location familiar.  Obviously, adapt this to whatever you need, but you'll have to change the test-runner file and driver script.
 
-From there, you can run:
+In the `src` directory (and not in `out`, the build ouputs directory), you can run:
 
 ```
 $ make y
