@@ -2,7 +2,13 @@
 
 No external libraries.  Vanilla Java 11.
 
-I had no idea this was some colossal landmine.
+I had no idea this was some colossal landmine, but once I got into it, I was inspired by this quote from Hacker News (link below):
+
+> *"Well, first and most obviously, if you are thinking of rolling your own JSON parser, stop and seek medical attention."*
+
+> *"Takeaways: Don't parse JSON yourself"*
+
+Sorry, Hacker News, that's **exactly** what I intend to do.
 
 https://seriot.ch/projects/parsing_json.html
 
