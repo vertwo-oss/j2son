@@ -14,7 +14,9 @@ And, finally, as if I wasn't already taking this as a personal challenge:
 
 > *"Or do you really think you could wrap your head all around those banana peels, and put together a robust, production-ready parser in a weekend?"*
 
-Sorry, Hacker News, that's **exactly** what I've done.  The one downside is that right now, on HUGELY nested arrays and objects (which is part of the test suite), it throws `StackOverflowException`.  Other parsers do this, too.  I'm not proud of it, and I'll fix it.  Implementations are allowed to define their own maximum-depth for nested arrays and objects, so I'll just catch SOEX, and throw my own `InvalidJsonException`; looks pretty easy.  I'm not exactly sure what "impl-defined" is even supposed to do in this context...
+Sorry, Hacker News, that's **exactly** what I've done.
+
+~~The one downside is that right now, on HUGELY nested arrays and objects (which is part of the test suite), it throws `StackOverflowException`.  Other parsers do this, too.  I'm not proud of it, and I'll fix it.  Implementations are allowed to define their own maximum-depth for nested arrays and objects, so I'll just catch SOEX, and throw my own `InvalidJsonException`; looks pretty easy.  I'm not exactly sure what "impl-defined" is even supposed to do in this context...~~  Fixed.  It gracefully throws `InvalidJsonException` when nesting is too deep, but I have no idea what's supposed to happen...
 
 https://seriot.ch/projects/parsing_json.html
 
