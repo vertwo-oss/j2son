@@ -30,7 +30,7 @@ user  0m0.044s
 sys   0m0.019s
 ```
 
-So, 65% slower.  Like I said, not great.  Could be, though, that I output the whole file and the whole parse.
+So, 80% slower.  Like I said, not great.  Could be, though, that I output the whole file and the whole parse.
 
 When I don't do all that stuff to STDOUT:
 
