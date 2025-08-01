@@ -11,7 +11,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.crinqle.j2son;
+package dev.v2.j2son;
 
 
 import java.io.ByteArrayInputStream;

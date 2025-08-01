@@ -16,4 +16,4 @@ echo "Parsing JSON in [$INPUT]..."
 
 cd ../out/production/j2son
 
-java com.crinqle.j2son.Json $INPUT
+java dev.v2.j2son.Json $INPUT

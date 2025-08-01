@@ -1,3 +1,7 @@
+.PHONY:		all
+all:	y n i
+
+
 .PHONY:		i
 i:
 	./run-tests i
