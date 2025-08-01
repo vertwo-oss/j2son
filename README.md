@@ -15,12 +15,32 @@ It can parse a 280 kB file in ~0.2 sec:
 ```
 -rw-r--r--@ 1 troy  staff  285152 Jun 19 ... test.json
 
-real  0m0.198s
-user  0m0.228s
-sys   0m0.029s
+real  0m0.159s
+user  0m0.270s
+sys   0m0.031s
 ```
 
-Not great.  Pretty horrifying, I'm sure.
+Not great.
+
+Compared with PHP's `json_decode()`:
+
+```
+real  0m0.090s
+user  0m0.044s
+sys   0m0.019s
+```
+
+So, 65% slower.  Like I said, not great.  Could be, though, that I output the whole file and the whole parse.
+
+When I don't do all that stuff to STDOUT:
+
+```
+real  0m0.138s
+user  0m0.143s
+sys   0m0.025s
+```
+
+Just 55% slower.
 
 ## It's a bit too permissive.
 
