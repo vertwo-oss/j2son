@@ -41,7 +41,79 @@ If you want to see what's actually in the object, call `dump()`:
 js.dump();
 ```
 
-Which will recursively dump the contents.
+Which will recursively dump the contents:
+
+```
+>>> ---- y_array_with_several_null.json ----
+>>> >[1,null,null,null,2]<
+<<< [1, (null), (null), (null), 2]
+================================================
+   Datum type: JSON_[array] System.out.println(8)
+        value: [1, (null), (null), (null), 2]
+------------------------------------------------
+          key: null
+------------------------------------------------
+    isBoolean? false
+       isLong? false
+     isDouble? false
+     isString? false
+------------------------------------------------
+    ================================================
+       Datum type: JSON_LONG System.out.println(3)
+            value: 1
+    ------------------------------------------------
+              key: null
+    ------------------------------------------------
+        isBoolean? false
+           isLong? true
+         isDouble? false
+         isString? false
+    ------------------------------------------------
+    ================================================
+       Datum type: JSON_NULL System.out.println(-1)
+            value: null
+    ------------------------------------------------
+              key: null
+    ------------------------------------------------
+        isBoolean? false
+           isLong? false
+         isDouble? false
+         isString? false
+    ------------------------------------------------
+    ================================================
+       Datum type: JSON_NULL System.out.println(-1)
+            value: null
+    ------------------------------------------------
+              key: null
+    ------------------------------------------------
+        isBoolean? false
+           isLong? false
+         isDouble? false
+         isString? false
+    ------------------------------------------------
+    ================================================
+       Datum type: JSON_NULL System.out.println(-1)
+            value: null
+    ------------------------------------------------
+              key: null
+    ------------------------------------------------
+        isBoolean? false
+           isLong? false
+         isDouble? false
+         isString? false
+    ------------------------------------------------
+    ================================================
+       Datum type: JSON_LONG System.out.println(3)
+            value: 2
+    ------------------------------------------------
+              key: null
+    ------------------------------------------------
+        isBoolean? false
+           isLong? true
+         isDouble? false
+         isString? false
+    ------------------------------------------------
+```
 
 
 
