@@ -1,0 +1,19 @@
+#! /bin/bash
+
+
+INPUT=$1
+
+if [ ! -f $INPUT ] ; then
+	echo
+	echo "  Usage: $0 input_file"
+	echo
+	exit
+fi
+
+INPUT=$(readlink -f $INPUT)
+
+echo "Parsing JSON in [$INPUT]..."
+
+cd ../out/production/j2son
+
+java com.crinqle.j2son.Json $INPUT
