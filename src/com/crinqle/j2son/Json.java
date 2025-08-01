@@ -34,10 +34,13 @@ import java.util.Set;
  */
 public class Json
 {
-    public static final boolean DEBUG_IO        = true;
-    public static final boolean DEBUG_VERBOSE   = false;
-    public static final boolean DEBUG_SEARCH    = false;
-    public static final boolean DEBUG_JSON_WALK = false;
+    public static final boolean DEBUG_TEST       = true;
+    public static final boolean DEBUG_IO         = false;
+    public static final boolean DEBUG_TEST_FILES = false;
+    public static final boolean DEBUG_DUMP       = false;
+    public static final boolean DEBUG_VERBOSE    = false;
+    public static final boolean DEBUG_SEARCH     = false;
+    public static final boolean DEBUG_JSON_WALK  = false;
 
 
     private static final String TEXT_COLOR_WHITE  = "\033[1;37m";
@@ -151,22 +154,14 @@ public class Json
 
     private int determineType()
     {
-        if( val instanceof Long )
-            return JSON_LONG;
-        else if( val instanceof Double )
-            return JSON_DOUBLE;
-        else if( val instanceof String )
-            return JSON_STRING;
-        else if( val instanceof Boolean )
-            return JSON_BOOLEAN;
-        else if( val instanceof List )
-            return JSON_ARRAY;
-        else if( val instanceof Map )
-            return JSON_OBJECT;
-        else if( null == val )
-            return JSON_NULL;
-        else
-            return JSON_INVALID;
+        if( val instanceof Long ) return JSON_LONG;
+        else if( val instanceof Double ) return JSON_DOUBLE;
+        else if( val instanceof String ) return JSON_STRING;
+        else if( val instanceof Boolean ) return JSON_BOOLEAN;
+        else if( val instanceof List ) return JSON_ARRAY;
+        else if( val instanceof Map ) return JSON_OBJECT;
+        else if( null == val ) return JSON_NULL;
+        else return JSON_INVALID;
     }
 
 
@@ -303,12 +298,9 @@ public class Json
 
     public String asJSON( final boolean useKey )
     {
-        if( val instanceof Long )
-            return (toKey( useKey ) + val);
-        else if( val instanceof Double )
-            return (toKey( useKey ) + val);
-        else if( val instanceof String )
-            return (toKey( useKey ) + "\"" + val + "\"");
+        if( val instanceof Long ) return (toKey( useKey ) + val);
+        else if( val instanceof Double ) return (toKey( useKey ) + val);
+        else if( val instanceof String ) return (toKey( useKey ) + "\"" + val + "\"");
         else if( val instanceof Boolean )
         {
             final String content = ((Boolean) val) ? JSON_LIT_TRUE : JSON_LIT_FALSE;
@@ -361,10 +353,8 @@ public class Json
 
             return mapAsJSON;
         }
-        else if( null == val )
-            return (toKey( useKey ) + JSON_LIT_NULL);
-        else
-            return "";
+        else if( null == val ) return (toKey( useKey ) + JSON_LIT_NULL);
+        else return "";
     }
 
 
@@ -555,41 +545,41 @@ public class Json
             File f = new File( path );
             if( !f.exists() )
             {
-                System.out.println( "Can't find file; checking parse-testing directory..." );
+                if( DEBUG_TEST_FILES ) System.out.println( "Can't find file; checking parse-testing directory..." );
                 path = "../../../tests/test_parsing/" + path;
 
                 f = new File( path );
                 if( !f.exists() )
                 {
-                    System.out.println( "Can't find file; checking transform-testing director..." );
+                    if( DEBUG_TEST_FILES ) System.out.println( "Can't find file; checking transform-testing director..." );
 
                     path = "../../../tests/test_transform/" + path;
 
                     f = new File( path );
                     if( !f.exists() )
                     {
-                        System.out.println( "Cannot find file; aborting." );
+                        System.err.println( "Cannot find file; aborting." );
                         System.exit( 1 );
                     }
                     else
                     {
-                        System.out.println( "Reading [" + path + "]..." );
+                        if( DEBUG_TEST_FILES ) System.out.println( "Reading [" + path + "]..." );
                     }
                 }
                 else
                 {
-                    System.out.println( "Reading [" + path + "]..." );
+                    if( DEBUG_TEST_FILES ) System.out.println( "Reading [" + path + "]..." );
                 }
             }
             else
             {
-                System.out.println( "Reading [" + path + "]..." );
+                if( DEBUG_TEST_FILES ) System.out.println( "Reading [" + path + "]..." );
             }
 
             String json = readFile( path, StandardCharsets.UTF_8 );
 
-            if( DEBUG_IO ) System.out.println( ">>> ---- " + TEXT_COLOR_GREEN + orig + TEXT_COLOR_SUFFIX + " ----" );
-            if( DEBUG_IO ) System.out.println( ">>> >" + TEXT_COLOR_CYAN + json + TEXT_COLOR_SUFFIX + "<" );
+            if( DEBUG_IO || DEBUG_TEST ) System.out.println( ">>> ---- " + TEXT_COLOR_GREEN + orig + TEXT_COLOR_SUFFIX + " ----" );
+            if( DEBUG_IO || DEBUG_TEST ) System.out.println( ">>> >" + TEXT_COLOR_CYAN + json + TEXT_COLOR_SUFFIX + "<" );
 
             return json;
         }
@@ -623,7 +613,9 @@ public class Json
             final String input = loadFile( path );
             final Json   j     = parse( input );
 
-            System.out.println( "<<< " + TEXT_COLOR_YELLOW + j + TEXT_COLOR_SUFFIX );
+            if( DEBUG_TEST ) System.out.println( "<<< " + TEXT_COLOR_YELLOW + j + TEXT_COLOR_SUFFIX );
+
+            if( DEBUG_DUMP ) j.dump();
         }
         catch( InvalidJsonException jex )
         {
