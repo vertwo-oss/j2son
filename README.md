@@ -147,6 +147,33 @@ Which will recursively dump the contents:
     ------------------------------------------------
 ```
 
+## Test Suite
 
+If you wanna run the "Test Suite", I assume that the build outputs are parallel to the `src` directory, in a directory called `out`, and that the class files are found in in `out/production/j2son`.
 
-*[It does use the Properties hack for Unicode decoding.]*
+From there, you can run:
+
+```
+$ make y
+...
+$ make n
+...
+$ make i
+...
+```
+
+To see the test suite I pulled from:
+
+https://github.com/nst/JSONTestSuite
+
+Which is (again) discussed here:
+
+https://seriot.ch/projects/parsing_json.html
+
+and also here, on Hacker News:
+
+https://news.ycombinator.com/item?id=12796556
+
+## Miscellany
+
+This library *DOES* use the Properties hack for Unicode escape sequence decoding.
