@@ -2,7 +2,19 @@
 
 No external libraries.  Vanilla Java 11.
 
-I had no idea this was some colossal landmine.
+I had no idea this was some colossal landmine, but once I got into it, I was inspired by this quote from Hacker News (link below):
+
+> *"Well, first and most obviously, if you are thinking of rolling your own JSON parser, stop and seek medical attention."*
+
+Then:
+
+> *"Takeaways: Don't parse JSON yourself"*
+
+And, finally, as if I wasn't already taking this as a personal challenge:
+
+> *"Or do you really think you could wrap your head all around those banana peels, and put together a robust, production-ready parser in a weekend?"*
+
+Sorry, Hacker News, that's **exactly** what I've done.  The one downside is that right now, on HUGELY nested arrays and objects (which is part of the test suite), it throws `StackOverflowException`.  Other parsers do this, too.  I'm not proud of it, and I'll fix it.  Implementations are allowed to define their own maximum-depth for nested arrays and objects, so I'll just catch SOEX, and throw my own `InvalidJsonException`; looks pretty easy.  I'm not exactly sure what "impl-defined" is even supposed to do in this context...
 
 https://seriot.ch/projects/parsing_json.html
 
@@ -149,9 +161,9 @@ Which will recursively dump the contents:
 
 ## Test Suite
 
-If you wanna run the "Test Suite", I assume that the build outputs are parallel to the `src` directory, in a directory called `out`, and that the class files are found in in `out/production/j2son`.
+If you wanna run the "Test Suite", I assume that the build outputs are parallel to the `src` directory, in a directory called `out`, and that the class files are found in in `out/production/j2son`.  IntelliJ users should find this build location familiar.  Obviously, adapt this to whatever you need, but you'll have to change the test-runner file and driver script.
 
-From there, you can run:
+In the `src` directory (and not in `out`, the build ouputs directory), you can run:
 
 ```
 $ make y
