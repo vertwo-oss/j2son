@@ -43,7 +43,7 @@ public class JsonParser
     private boolean isBareLiteral = false;
 
 
-    public static Json parse( final String json ) throws IOException, InvalidJsonException
+    static Json parse( final String json ) throws IOException, InvalidJsonException
     {
         JsonParser parser = new JsonParser();
         return parser.parseJson( json );

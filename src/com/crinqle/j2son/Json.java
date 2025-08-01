@@ -555,6 +555,13 @@ public class Json
     }
 
 
+    public static Json parse( String input ) throws IOException, InvalidJsonException
+    {
+        final Json js = JsonParser.parse( input );
+        return js;
+    }
+
+
     private static String readFile( String path, Charset encoding ) throws IOException
     {
         byte[] encoded = Files.readAllBytes( Paths.get( path ) );
@@ -637,7 +644,7 @@ public class Json
         try
         {
             final String input = loadFile( path );
-            final Json   j     = JsonParser.parse( input );
+            final Json   j     = parse( input );
 
             //j.dump();
             System.out.println( "<<< " + TEXT_COLOR_YELLOW + j + TEXT_COLOR_SUFFIX );
