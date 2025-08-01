@@ -151,11 +151,25 @@ public class JsonParser
         switch( c )
         {
             case '{':
-                j = parseObject();
+                try
+                {
+                    j = parseObject();
+                }
+                catch( StackOverflowError soerr )
+                {
+                    throw new InvalidJsonException( "Nesting too deep." );
+                }
                 break;
 
             case '[':
-                j = parseArray();
+                try
+                {
+                    j = parseArray();
+                }
+                catch( StackOverflowError soerr )
+                {
+                    throw new InvalidJsonException( "Nesting too deep." );
+                }
                 break;
 
             case '"':
