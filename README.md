@@ -30,9 +30,9 @@ final Json js = Json.parse( input );
 Using it is pretty basic:
 
 ```
-js.getString(); // If this Json object is a string.
-js.getArray(); // Returns a List< Json >, when the JSON value is an array.
-js.getMap(); // Returns a Map< String, Json >, whent he JSON value is an object.
+js.getString();   // If this Json object is a string.
+js.getArray();    // Returns a List< Json >, when the JSON value is an array.
+js.getMap();      // Returns a Map< String, Json >, whent he JSON value is an object.
 ```
 
 If you want to see what's actually in the object, call `dump()`:
