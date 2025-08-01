@@ -564,7 +564,7 @@ public class Json
 
     private static String loadFile( String path ) throws IOException, SecurityException
     {
-        String orig = new StringBuilder(path).toString();
+        String orig = new StringBuilder( path ).toString();
 
         try
         {

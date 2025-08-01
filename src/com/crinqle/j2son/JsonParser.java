@@ -28,7 +28,6 @@ import java.util.*;
  */
 public class JsonParser
 {
-    public static final boolean DEBUG_IO    = true;
     public static final boolean DEBUG_INPUT = false;
     public static final boolean DEBUG_JSON  = false;
     public static final boolean DEBUG_WS    = false;
@@ -36,11 +35,6 @@ public class JsonParser
     public static final boolean DEBUG_ARR   = false;
     public static final boolean DEBUG_STR   = false;
     public static final boolean DEBUG_NUM   = false;
-
-    public static final boolean DEBUG_JSON_WALK         = false;
-    public static final boolean DEBUG_JSON_VERBOSE      = false;
-    public static final boolean DEBUG_JSON_VERBOSE_2    = false;
-    public static final boolean DEBUG_JSON_VERBOSE_TYPE = false;
 
     public static final String ENCODING = "UTF-8";
 
