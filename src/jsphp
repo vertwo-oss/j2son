@@ -1,0 +1,6 @@
+#! /opt/homebrew/bin/php
+<?php
+
+$data = file_get_contents($argv[1]);
+$obj  = json_decode($data);
+
