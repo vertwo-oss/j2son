@@ -24,7 +24,7 @@ When you have a JSON string, and you want to use this to parse it:
 
 ```
 String input = ...;
-final Json js = JsonParser.parse( input );
+final Json js = Json.parse( input );
 ```
 
 Using it is pretty basic:
