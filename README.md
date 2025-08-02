@@ -168,6 +168,12 @@ If you wanna run the "Test Suite", I assume that the build outputs are parallel 
 In the `src` directory (and not in `out`, the build ouputs directory), you can run:
 
 ```
+$ make
+```
+
+to run all the tests, or if you just wanna run a group of them, use these targets:
+
+```
 $ make y
 ...
 $ make n
