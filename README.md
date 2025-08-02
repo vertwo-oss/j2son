@@ -198,6 +198,8 @@ https://news.ycombinator.com/item?id=12796556
 
 This library *DOES* use the Properties hack for Unicode escape sequence decoding.
 
+https://stackoverflow.com/questions/13700333/convert-escaped-unicode-character-back-to-actual-character
+
 ## License: MIT
 
 ```
